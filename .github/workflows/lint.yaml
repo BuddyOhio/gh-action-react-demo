@@ -12,8 +12,14 @@ on:
     
 jobs:
   lint:
+    environment: testing
     runs-on: ubuntu-latest
     steps:
+      - name: Print env variable
+        run: echo "Bun version:${{ vars.BUN_VERSION }}"
+      - name: Print env secret
+        run: echo "API Key:${{ secrets.API_KEY }}"
+        
       - name: Clone repo
         uses: actions/checkout@v5
       - name: Setup Bun
