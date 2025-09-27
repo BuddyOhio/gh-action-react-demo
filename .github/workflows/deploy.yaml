@@ -42,6 +42,6 @@ jobs:
         with:
           name: dist-folder
       - name: List all files
-        run: ls -R   
+        run: ls -R
       - name: Deploy
         run: echo "Deploying..."
