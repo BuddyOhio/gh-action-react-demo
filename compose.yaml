@@ -1,0 +1,14 @@
+networks:
+  caddy:
+    external: true
+      
+services:
+  web:
+    image: buddyohio/react-demo1
+    container_name: react
+    ports:
+      - 3000:3000
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    networks:
+      - caddy
