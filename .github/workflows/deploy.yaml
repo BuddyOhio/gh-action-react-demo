@@ -77,7 +77,7 @@ jobs:
     steps:
         - name: Discord notification
           env:
-            DISCORD_WEBHOOK: https://discord.com/api/webhooks/1421697960139427880/ByRBUqGOeLqVJwZKvZnqP_kfwFr57MkGVj3OBLtr7lWCiQVZM7lJT1xVDBrbEthDuHJj
+            DISCORD_WEBHOOK: https://discord.com/api/webhooks/1421700732481966200/qe5wKqP348QzWEwBOCXR8EsEl3DtYy7WLWDzu2zWV1sASEc75FU-oBUlKSDa-j7KkGhT
           uses: Ilshidur/action-discord@master
           with:
             args: 'Build failed by GH-Action.'
