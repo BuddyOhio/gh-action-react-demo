@@ -48,8 +48,8 @@ jobs:
         with:
           name: dist-folder
           path: dist/
-      - name: Force failed
-        run: exit 1
+      # - name: Force failed
+      #   run: exit 1
 
   deploy:
     runs-on: ubuntu-latest
@@ -73,11 +73,11 @@ jobs:
     needs:
       - build
       - deploy
-    if: failure()
+    if: always()
     steps:
         - name: Discord notification
           env:
             DISCORD_WEBHOOK: https://discord.com/api/webhooks/1421700732481966200/qe5wKqP348QzWEwBOCXR8EsEl3DtYy7WLWDzu2zWV1sASEc75FU-oBUlKSDa-j7KkGhT
           uses: Ilshidur/action-discord@master
           with:
-            args: 'Build failed by GH-Action.'
+            args: 'Notify ${{ github.sha }} by GH-Action.'
