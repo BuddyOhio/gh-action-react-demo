@@ -17,33 +17,35 @@ jobs:
   build:
     environment: prod
     runs-on: ubuntu-latest
-    container:
-      image: oven/bun:1
-      env:
-        NODE_ENV: production
+    # container:
+    #   image: oven/bun:1
+    #   env:
+    #     NODE_ENV: production
 
     steps:
-      - name: Print env variable
-        run: echo "Bun version:${{ vars.BUN_VERSION }}"
-      - name: Print env secret
-        run: echo "API Key:${{ secrets.API_KEY }}"
+      # - name: Print env variable
+      #   run: echo "Bun version:${{ vars.BUN_VERSION }}"
+      # - name: Print env secret
+      #   run: echo "API Key:${{ secrets.API_KEY }}"
 
       - name: Clone repo
         uses: actions/checkout@v5
-      # - name: Setup Bun
-      #   uses: oven-sh/setup-bun@v2
+      # # - name: Setup Bun
+      # #   uses: oven-sh/setup-bun@v2
+      # #   with:
+      # #     bun-version: ${{vars.BUN_VERSION}}
+
+      # - name: Cache dependencies
+      #   uses: actions/cache@v4
       #   with:
-      #     bun-version: ${{vars.BUN_VERSION}}
+      #     path: |
+      #       ~/.bun/install/cache
+      #     key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
 
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.bun/install/cache
-          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
-
-      - name: Install Dependencies
-        run: bun i
+      # - name: Install Dependencies
+      #   run: bun i
+      - name: Install and Cache
+        uses: ./.github/actions/install-cache
       - name: Build Project
         run: bun run build
       - name: List files
