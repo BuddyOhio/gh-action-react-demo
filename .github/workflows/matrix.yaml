@@ -6,16 +6,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        bun_version: ["1.2.20", "1.2.18", "1.2.16", ]
+        bun_version: ["1.2.0", "1.2.18", "1.2.16", ]
         browser: ["firefox", "chrome", "safari", ]
         exclude:
           - bun_version: "1.2.18"
-          - browser: "safari"
+            browser: "safari"
         include:
           - bun_version: "1.2.18"
-          - browser: "edge"
+            browser: "edge"
           - bun_version: "1.1.0"
-          - browser: "safari"
+            browser: "safari"
         
     steps:
       - name: Print Bun version and test browser
